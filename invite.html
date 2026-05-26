@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урилга</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial;
+    background:linear-gradient(135deg,#405ca3,#0e1936);
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    width:360px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#112d75;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 20px;
+    border:none;
+    background:#ff4081;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#cf6387;
+    transform:scale(1.05);
+}
+
+#passMsg{
+    display:none;
+    margin-top:15px;
+    color:rgb(79, 160, 240);
+    font-weight:bold;
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>🎉 Урилга 🎉</h1>
+
+    <p> Таныг  Мишээлийн төрсөн өдөрт урьж байна.</p>
+
+    <p>📅 2026.06.22</p>
+    <p>⏰ 18:00</p>
+    <p>📍 BLUE SKY RESTAURANT </p>
+
+   <button onclick="openInvitation()">Урилга илгээх</button>
+
+    <div id="msg">
+    🎁 Бэлгээ мартуузай! Ирсэн хүн болгонд бэлэгтэй жүү.
+</div>
+
+<div id="passMsg">
+    🎉 PASSED! Урилга амжилттай илгээлээ!
+</div>
+
+</div>
+
+<!-- 🎵 ДУУ -->
+<audio id="music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function openInvitation(){
+
+    // message гаргах
+    document.getElementById("msg").style.display = "block";
+
+    // PASS message гаргах
+    document.getElementById("passMsg").style.display = "block";
+
+    // дуу эхлүүлэх
+    let music = document.getElementById("music");
+    music.play().catch(()=>{});
+
+    // 🎉 confetti
+    confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+    });
+
+    // optional alert
+    setTimeout(()=>{
+        alert("🎉 PASSED! Invitation seen successfully!");
+    }, 500);
+}
+
+</script>
+
+</body>
+</html>
